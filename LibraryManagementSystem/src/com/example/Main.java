@@ -3,6 +3,7 @@ package com.example;
 import com.example.entity.Book;
 import com.example.entity.User;
 import com.example.entity.LoanRecord;
+import com.example.exception.EntityNotFoundException;
 import com.example.service.BookService;
 import com.example.service.BookServiceIMPL;
 import com.example.service.UserService;
@@ -29,7 +30,6 @@ public class Main {
             choice = readInt(sc, "Enter choice: ");
 
             switch (choice) {
-
                 case 1:
                     addBook(sc, bookService);
                     break;
@@ -39,9 +39,13 @@ public class Main {
                     break;
 
                 case 3:
-                    int delBookId = readInt(sc, "Enter Book ID to delete: ");
-                    bookService.deleteBook(delBookId);
-                    System.out.println("Book deleted");
+                    try {
+                        int delBookId = readInt(sc, "Enter Book ID to delete: ");
+                        bookService.deleteBook(delBookId);
+                        System.out.println("Book deleted");
+                    } catch (EntityNotFoundException e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
 
                 case 4:
@@ -53,9 +57,13 @@ public class Main {
                     break;
 
                 case 6:
-                    int delUserId = readInt(sc, "Enter User ID to delete: ");
-                    userService.deleteUser(delUserId);
-                    System.out.println("User deleted");
+                    try {
+                        int delUserId = readInt(sc, "Enter User ID to delete: ");
+                        userService.deleteUser(delUserId);
+                        System.out.println("User deleted");
+                    } catch (EntityNotFoundException e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
 
                 case 7:
@@ -67,9 +75,13 @@ public class Main {
                     break;
 
                 case 9:
-                    int delLoanId = readInt(sc, "Enter Loan ID to delete: ");
-                    loanService.deleteLoanRecord(delLoanId);
-                    System.out.println("Loan record deleted");
+                    try {
+                        int delLoanId = readInt(sc, "Enter Loan ID to delete: ");
+                        loanService.deleteLoanRecord(delLoanId);
+                        System.out.println("Loan record deleted");
+                    } catch (EntityNotFoundException e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
 
                 case 0:

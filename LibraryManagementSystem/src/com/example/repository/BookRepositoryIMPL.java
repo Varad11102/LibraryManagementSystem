@@ -1,7 +1,7 @@
 package com.example.repository;
 
-
 import com.example.entity.Book;
+import com.example.exception.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,14 +17,23 @@ public class BookRepositoryIMPL {
     }
 
     public void deleteById(int id) {
-        books.removeIf(book -> book.getId() == id);
+        boolean removed = books.removeIf(book -> book.getId() == id);
+        if (!removed) {
+            throw new EntityNotFoundException("Book with ID " + id + " not found");
+        }
     }
 
     public void update(Book updatedBook) {
+        boolean found = false;
         for (int i = 0; i < books.size(); i++) {
             if (books.get(i).getId() == updatedBook.getId()) {
                 books.set(i, updatedBook);
+                found = true;
+                break;
             }
+        }
+        if (!found) {
+            throw new EntityNotFoundException("Book with ID " + updatedBook.getId() + " not found");
         }
     }
 }
