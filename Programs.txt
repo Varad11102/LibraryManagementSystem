@@ -1,0 +1,616 @@
+1.Fibonacci series
+a. with recursion
+class FibonacciRecursion {
+    static int fib(int n) {
+        if (n <= 2) return 1;
+        return fib(n - 1) + fib(n - 2);
+    }
+
+    public static void main(String[] args) {
+        int n = 10;
+        for (int i = 1; i <= n; i++) {
+            System.out.print(fib(i) + " ");
+        }
+    }
+}
+b. without recursion
+class FibonacciIteration {
+    public static void main(String[] args) {
+        int n = 10;
+        int a = 1, b = 1;
+        System.out.print(a + " " + b + " ");
+        for (int i = 3; i <= n; i++) {
+            int c = a + b;
+            System.out.print(c + " ");
+            a = b;
+            b = c;
+        }
+    }
+}
+2. Prime numbers 
+class PrimeNumbers {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 100; i++) {
+            if (isPrime(i)) System.out.print(i + " ");
+        }
+    }
+
+    static boolean isPrime(int n) {
+        if (n < 2) return n == 1;
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+}
+3.Swap two Numbers without temp
+class SwapNumbers {
+    public static void main(String[] args) {
+        int x = 10, y = 6;
+        x = x + y;
+        y = x - y;
+        x = x - y;
+        System.out.println("x=" + x + " y=" + y);
+    }
+}
+4.Factorial
+a.with recursion
+class FactorialRecursion {
+    static int fact(int n) {
+        if (n == 0) return 1;
+        return n * fact(n - 1);
+    }
+
+    public static void main(String[] args) {
+        int n = 5;
+        System.out.println("Factorial: " + fact(n));
+    }
+}
+b.without recursion
+
+class Factorial {
+    public static void main(String[] args) {
+        int n = 5, result = 1;
+        for (int i = 1; i <= n; i++) result *= i;
+        System.out.println("Factorial: " + result);
+    }
+}
+5.Reverse string
+class ReverseString {
+    public static void main(String[] args) {
+        String str = "Hello";
+        char[] arr = str.toCharArray();
+        for (int i = arr.length - 1; i >= 0; i--) {
+            System.out.print(arr[i]);
+        }
+    }
+}
+class VowelConsonantCount {
+    public static void main(String[] args) {
+        String str = "HelloWorld";
+        str = str.toLowerCase();
+        char[] chars = str.toCharArray();
+
+        int vowels = 0, consonants = 0;
+
+        for (char c : chars) {
+            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u') {
+                vowels++;
+            } else if (c >= 'a' && c <= 'z') {
+                consonants++;
+            }
+        }
+
+        System.out.println("Vowels: " + vowels + ", Consonants: " + consonants);
+    }
+}
+
+
+7.check prime number
+class CheckPrime {
+    public static void main(String[] args) {
+        int n = 29;
+        System.out.println(n + (isPrime(n) ? " is prime" : " is not prime"));
+    }
+
+    static boolean isPrime(int n) {
+        if (n < 2) return false;
+        for (int i = 2; i <= Math.sqrt(n); i++) if (n % i == 0) return false;
+        return true;
+    }
+}
+8.ArmStrong number
+class Armstrong {
+    public static void main(String[] args) {
+        int n = 370;
+        int temp = n, sum = 0, digits = String.valueOf(n).length();
+        while (temp > 0) {
+            int d = temp % 10;
+            sum += Math.pow(d, digits);
+            temp /= 10;
+        }
+        System.out.println(n + (sum == n ? " is an Armstrong number" : " is not an Armstrong number"));
+    }
+}
+9.Sum Of Digits
+class SumDigits {
+    public static void main(String[] args) {
+        int n = 1234, sum = 0;
+        while (n > 0) {
+            sum += n % 10;
+            n /= 10;
+        }
+        System.out.println("Sum of digits: " + sum);
+    }
+}
+10.Largest Of Three Numbers
+class LargestNumber {
+    public static void main(String[] args) {
+        int x = 10, y = 5, z = 15;
+        int largest = (x > y) ? (x > z ? x : z) : (y > z ? y : z);
+        System.out.println(largest + " is the largest number");
+    }
+}
+11.Odd or Even
+class OddEven {
+    public static void main(String[] args) {
+        int n = 18;
+        if(n%2==0){
+		System.out.println("Even");
+    }
+else{
+	System.out.println("Odd");
+}
+}
+}
+12.Bubble Sort
+class BubbleSort {
+    public static void main(String[] args) {
+        int[] arr = {5, 2, 9, 1, 5, 6};
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+        for (int num : arr) System.out.print(num + " ");
+    }
+}
+13.Linear Search
+class LinearSearch {
+    public static void main(String[] args) {
+        int[] arr = {10, 20, 30, 40, 50};
+        int key = 30;
+        boolean found = false;
+        for (int num : arr) {
+            if (num == key) {
+                found = true;
+                break;
+            }
+        }
+        System.out.println(found ? "Found" : "Not Found");
+    }
+}
+14.Shape Problem
+abstract class Shape {
+    abstract double calculateArea();
+}
+
+class Circle extends Shape {
+    double r;
+    Circle(double r) { this.r = r; }
+    double calculateArea() { return Math.PI * r * r; }
+}
+
+class Rectangle extends Shape {
+    double w, l;
+    Rectangle(double w, double l) { this.w = w; this.l = l; }
+    double calculateArea() { return w * l; }
+}
+
+class Triangle extends Shape {
+    double b, h;
+    Triangle(double b, double h) { this.b = b; this.h = h; }
+    double calculateArea() { return 0.5 * b * h; }
+}
+
+public class TestShapes {
+    public static void main(String[] args) {
+        Shape c = new Circle(5);
+        Shape r = new Rectangle(4, 6);
+        Shape t = new Triangle(3, 7);
+        System.out.println("Circle area: " + c.calculateArea());
+        System.out.println("Rectangle area: " + r.calculateArea());
+        System.out.println("Triangle area: " + t.calculateArea());
+    }
+}
+15.Animal Problem
+class Animal {
+    void makeSound() { System.out.println("some sound"); }
+}
+
+class Dog extends Animal {
+    void makeSound() { System.out.println("Bark"); }
+}
+
+class Cat extends Animal {
+    void makeSound() { System.out.println("Meow"); }
+}
+
+public class TestAnimals {
+    public static void main(String[] args) {
+        Animal a = new Animal();
+        Animal d = new Dog();
+        Animal c = new Cat();
+        a.makeSound();
+        d.makeSound();
+        c.makeSound();
+    }
+}
+16.Sport Problem:
+class Sport {
+    void play() { System.out.println("Playing a sport"); }
+}
+
+class Football extends Sport {
+    void play() { System.out.println("Playing Football"); }
+}
+
+class Basketball extends Sport {
+    void play() { System.out.println("Playing Basketball"); }
+}
+
+class Tennis extends Sport {
+    void play() { System.out.println("Playing Tennis"); }
+}
+
+public class TestSports {
+    public static void main(String[] args) {
+        Sport s1 = new Football();
+        Sport s2 = new Basketball();
+        Sport s3 = new Tennis();
+        s1.play();
+        s2.play();
+        s3.play();
+    }
+}
+17. Vehicle Problem:
+abstract class Vehicle {
+    abstract void startEngine();
+    abstract void stopEngine();
+}
+
+class Car extends Vehicle {
+    void startEngine() { System.out.println("Car engine started"); }
+    void stopEngine() { System.out.println("Car engine stopped"); }
+}
+
+class Motorcycle extends Vehicle {
+    void startEngine() { System.out.println("MotorCycle engine started"); }
+    void stopEngine() { System.out.println("MotorCycle engine stopped"); }
+}
+
+public class TestVehicles {
+    public static void main(String[] args) {
+        Vehicle v1 = new Car();
+        Vehicle v2 = new Motorcycle();
+        v1.startEngine();
+        v1.stopEngine();
+        v2.startEngine();
+        v2.stopEngine();
+    }
+}
+18.Invalid Age Problem:
+class InvalidAgeException extends Exception {
+    InvalidAgeException(String msg) { super(msg); }
+}
+
+class Registration {
+    void register(int age) throws InvalidAgeException {
+        if (age < 18) throw new InvalidAgeException("Age must be 18 or above");
+        System.out.println("Registration successful");
+    }
+
+    public static void main(String[] args) {
+        Registration r = new Registration();
+        try { r.register(15); }
+        catch (InvalidAgeException e) { System.out.println(e.getMessage()); }
+    }
+}
+19.Insufficient Funds:
+class InsufficientFundsException extends Exception {
+    InsufficientFundsException(String msg) { super(msg); }
+}
+
+class BankAccount {
+    int balance = 1000;
+    void withdraw(int amount) throws InsufficientFundsException {
+        if (amount > balance) throw new InsufficientFundsException("Not enough balance");
+        balance -= amount;
+        System.out.println("Withdraw successful, balance: " + balance);
+    }
+
+    public static void main(String[] args) {
+        BankAccount b = new BankAccount();
+        try { b.withdraw(1500); }
+        catch (InsufficientFundsException e) { System.out.println(e.getMessage()); }
+    }
+}
+20.Invalid Email:
+class InvalidEmailException extends Exception {
+    InvalidEmailException(String msg) { super(msg); }
+}
+
+class EmailValidator {
+    void validate(String email) throws InvalidEmailException {
+        if (!email.contains("@")) throw new InvalidEmailException("Invalid email address");
+        System.out.println("Valid email");
+    }
+
+    public static void main(String[] args) {
+        EmailValidator ev = new EmailValidator();
+        try { ev.validate("testexample.com"); }
+        catch (InvalidEmailException e) { System.out.println(e.getMessage()); }
+    }
+}
+21:Negative Number:
+class NegativeNumberException extends Exception {
+    NegativeNumberException(String msg) { super(msg); }
+}
+
+class MathOperation {
+    int squareRoot(int n) throws NegativeNumberException {
+        if (n < 0) throw new NegativeNumberException("Negative number not allowed");
+        return (int)Math.sqrt(n);
+    }
+
+    public static void main(String[] args) {
+        MathOperation m = new MathOperation();
+        try { System.out.println(m.squareRoot(-9)); }
+        catch (NegativeNumberException e) { System.out.println(e.getMessage()); }
+    }
+}
+22.Remove Duplicates From ArrayList:
+import java.util.*;
+
+class RemoveDuplicates {
+    public static void main(String[] args) {
+        ArrayList<Integer> list = new ArrayList<>(Arrays.asList(1,2,2,3,4,4,5));
+        Set<Integer> set = new LinkedHashSet<>(list);
+        list.clear();
+        list.addAll(set);
+        System.out.println("After removing duplicates: " + list);
+    }
+}
+23.Count Frequency Of Elements:
+import java.util.*;
+
+class FrequencyCount {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>(Arrays.asList("apple","banana","apple","orange","banana"));
+        Map<String,Integer> freq = new HashMap<>();
+        for (String s : list) freq.put(s, freq.getOrDefault(s,0)+1);
+        System.out.println("Frequency: " + freq);
+    }
+}
+24.find duplicate elements:
+import java.util.*;
+
+class FindDuplicates {
+    public static void main(String[] args) {
+        ArrayList<Integer> list = new ArrayList<>(Arrays.asList(1,2,3,2,4,5,1));
+        Set<Integer> seen = new HashSet<>();
+        Set<Integer> duplicates = new HashSet<>();
+        for (int num : list) {
+            if (!seen.add(num)) duplicates.add(num);
+        }
+        System.out.println("Duplicates: " + duplicates);
+    }
+}
+25. Sort ArrayList of Strings:
+import java.util.*;
+
+class SortStrings {
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>(Arrays.asList("Banana","Apple","Orange","Grapes"));
+        Collections.sort(list);
+        System.out.println("Ascending: " + list);
+        Collections.sort(list, Collections.reverseOrder());
+        System.out.println("Descending: " + list);
+    }
+}
+26.Union of Two HashSets:
+import java.util.*;
+
+class UnionHashSet {
+    public static void main(String[] args) {
+        HashSet<Integer> set1 = new HashSet<>(Arrays.asList(1,2,3));
+        HashSet<Integer> set2 = new HashSet<>(Arrays.asList(3,4,5));
+        HashSet<Integer> union = new HashSet<>(set1);
+        union.addAll(set2);
+        System.out.println("Union: " + union);
+    }
+}
+27.Priority Queue Operations:
+import java.util.*;
+
+class PriorityQueueOps {
+    public static void main(String[] args) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        pq.add(10);
+        pq.add(5);
+        pq.add(20);
+        System.out.println("Peek: " + pq.peek());
+        System.out.println("Removed: " + pq.remove());
+        System.out.println("Queue: " + pq);
+    }
+}
+28. Deque Operations:
+import java.util.*;
+
+class DequeOps {
+    public static void main(String[] args) {
+        Deque<String> dq = new LinkedList<>();
+        dq.addFirst("A");
+        dq.addLast("B");
+        dq.addLast("C");
+        System.out.println("Deque: " + dq);
+        dq.removeFirst();
+        dq.removeLast();
+        System.out.println("After removals: " + dq);
+    }
+}
+Lambda Expressions:
+29.Sum of two Integers
+interface Sum {
+    int add(int a, int b);
+}
+
+public class SumExample {
+    public static void main(String[] args) {
+        Sum sum = (a, b) -> a + b;
+        System.out.println("Sum: " + sum.add(5, 7));
+    }
+}
+30.Check If String is Empty:
+interface CheckEmpty {
+    boolean isEmpty(String s);
+}
+
+public class CheckEmptyExample {
+    public static void main(String[] args) {
+        CheckEmpty check = s -> s.isEmpty();
+        System.out.println("Is empty: " + check.isEmpty(""));
+        System.out.println("Is empty: " + check.isEmpty("Hello"));
+    }
+}
+31.convert list to uppercase:
+import java.util.*;
+
+public class UppercaseExample {
+    public static void main(String[] args) {
+        List<String> strList = Arrays.asList("Apple", "Banana", "Oranges", "Grapes");
+        strList.stream()
+               .map(String::toUpperCase)
+               .forEach(System.out::println);
+    }
+}
+32.check if number is prime
+interface CheckPrime {
+    boolean isPrime(int n);
+}
+
+public class PrimeExample {
+    public static void main(String[] args) {
+        CheckPrime primeCheck = n -> {
+            if (n < 2) return false;
+            for (int i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i == 0) return false;
+            }
+            return true;
+        };
+
+        System.out.println("Is prime: " + primeCheck.isPrime(29));
+        System.out.println("Is prime: " + primeCheck.isPrime(15));
+    }
+}
+33.Average of doubles:
+import java.util.*;
+
+public class AverageExample {
+    public static void main(String[] args) {
+        List<Double> doubleList = Arrays.asList(10.0, 15.0, 25.0, 30.0, 45.0);
+        double avg = doubleList.stream()
+                               .mapToDouble(Double::doubleValue)
+                               .average()
+                               .orElse(0);
+        System.out.println("Average: " + avg);
+    }
+}
+
+Streams
+34.Filter Even Numbers:
+import java.util.*;
+
+public class FilterEvenExample {
+    public static void main(String[] args) {
+        List<Integer> nums = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+        nums.stream()
+            .filter(n -> n % 2 == 0)
+            .forEach(System.out::println);
+    }
+}
+35.Convert Strings to Uppercase.
+import java.util.*;
+
+public class UppercaseStreamExample {
+    public static void main(String[] args) {
+        List<String> strList = Arrays.asList("apple","banana","orange","grapes");
+        strList.stream()
+               .map(String::toUpperCase)
+               .forEach(System.out::println);
+    }
+}
+36.Sum of Integers:
+import java.util.*;
+
+public class SumStreamExample {
+    public static void main(String[] args) {
+        List<Integer> nums = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+        int sum = nums.stream()
+                      .mapToInt(Integer::intValue)
+                      .sum();
+        System.out.println("Sum: " + sum);
+    }
+}
+37. Max Value
+import java.util.*;
+
+public class MaxStreamExample {
+    public static void main(String[] args) {
+        List<Integer> nums = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+        int max = nums.stream()
+                      .max(Integer::compare)
+                      .get();
+        System.out.println("Max: " + max);
+    }
+}
+38. Min value
+import java.util.*;
+
+public class MinStreamExample {
+    public static void main(String[] args) {
+        List<Integer> nums = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+        int min = nums.stream()
+                      .min(Integer::compare)
+                      .get();
+        System.out.println("Min: " + min);
+    }
+}
+39.Count Elements
+import java.util.*;
+
+public class CountStreamExample {
+    public static void main(String[] args) {
+        List<Integer> nums = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+        long count = nums.stream().count();
+        System.out.println("Count: " + count);
+    }
+}
+40.sort alphabetically
+import java.util.*;
+
+public class SortStreamExample {
+    public static void main(String[] args) {
+        List<String> strList = Arrays.asList("apple","banana","orange","grapes");
+        strList.stream()
+               .sorted()
+               .forEach(System.out::println);
+    }
+}
+
+
+
